@@ -20,28 +20,27 @@ List<int> input() {
   return [a, b];
 }
 
+int fibonacci(int n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
 // Sum function from a to b in Fibonacci
 int sumFibonacci(int a, int b) {
   int sum = 0;
-  int f1 = 0;
-  int f2 = 1;
 
-  while (f2 <= b) {
-    if (f2 >= a) {
-      sum += f2;
-    }
-    int temp = f1 + f2;
-    f1 = f2;
-    f2 = temp;
+  for (int i = a; i <= b; i++) {
+    sum += fibonacci(i);
   }
+
   return sum;
 }
 
 // Main
 void main() {
-  List<int> so = input();
-  int a = so[0];
-  int b = so[1];
+  List<int> number = input();
+  int a = number[0];
+  int b = number[1];
 
   // Gọi hàm tính tổng và in ra màn hình
   print("Sum from $a to $b in Fibonacci: ${sumFibonacci(a, b)}");
